@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        android:key="change_username"
+        android:title="@string/cambiarusername"
+        android:summary="@string/clickcambiar" />
+
+    <Preference
+        android:key="change_password"
+        android:title="@string/cambiarcontrasena"
+        android:summary="@string/clickcambiarcontra" />
+
+    <ListPreference
+        android:key="language"
+        android:title="@string/lenguaje"
+        android:dialogTitle="@string/seleccionaLeng"
+        android:entries="@array/settings_list_preference_titles"
+        android:entryValues="@array/settings_list_preference_values"
+        android:summary="@string/clickforshow" />
+
+    <SwitchPreference
+        android:key="switch"
+        android:title="@string/notificaciones"
+        android:summary="@string/clickparaEncender"
+        android:defaultValue="true" />
+
+    <Preference
+        android:key="delete_account"
+        android:title="@string/eliminarcuenta"
+        android:summary="@string/eliminarcuenta2" />
+
+</PreferenceScreen>

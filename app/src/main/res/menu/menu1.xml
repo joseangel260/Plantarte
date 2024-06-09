@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_user"
+        android:icon="@drawable/usuario2"
+        android:title="@string/ajustes" />
+    <item
+        android:id="@+id/navigation_plants"
+        android:icon="@drawable/planta"
+        android:title="@string/plantas" />
+    <item
+        android:id="@+id/navigation_garden"
+        android:icon="@drawable/jardin"
+        android:title="@string/mijardin" />
+</menu>

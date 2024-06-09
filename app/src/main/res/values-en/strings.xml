@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Plantarte</string>
+    <string name="text_bienvenido">Welcome to the Garden!!</string>
+    <string name="button_acceder">Access</string>
+    <string name="stringCorreoContra">Please enter email and password.</string>
+    <string name="iniciadoSesion">You have logged in.</string>
+    <string name="falloLogin">Authentication failed.</string>
+    <string name="Correoelectrónico">Email</string>
+    <string name="Contraseña">Password</string>
+    <string name="button_Entrar">Enter</string>
+    <string name="Olvidastecontra">Forgot your password?</string>
+    <string name="Registrarse">SIGN UP</string>
+    <string name="usuarioCreado">User created.</string>
+    <string name="authentication_failed">Authentication failed.</string>
+    <string name="nombre">Name</string>
+    <string name="correo">Email</string>
+    <string name="password">Password</string>
+    <string name="repetirPass">Repeat Password</string>
+    <string name="registrarse">SIGN UP</string>
+    <string name="IniciaSesion">Already have an account? Log in</string>
+    <string name="notSame_pass">Passwords dont match</string>
+    <string name="welcomeJardin">Welcome to Your Garden</string>
+    <string name="tuJardin">Your Garden</string>
+    <string name="tips">Tips</string>
+    <string name="plantas">Plants</string>
+    <string name="editNombreUsr">Edit Username.</string>
+    <string name="meterTexto">Enter a text</string>
+
+    <string name="editPassword">Edit Password</string>
+    <string name="LastPassword">Enter the old password</string>
+    <string name="clickforShow">Click to change the Language</string>
+    <string name="lenguaje">Change Language</string>
+    <string name="seleccionaLeng">Select Language</string>
+    <string name="clickforshow">Click to show a list to choose from</string>
+    <string name="notificaciones">Notifications</string>
+    <string name="clickparaEncender">Click to turn them on or off</string>
+    <string name="ingresarCorreo">Please enter your email address</string>
+    <string name="emailEnviado">Password recovery email sent</string>
+    <string name="errorEnviarEmail">Error sending recovery mail</string>
+
+    <string name="usuario_no_encontrado">User not found</string>
+    <string name="error_cargar_usuario">Error loading user</string>
+    <string name="error_guardar_usuario">Error saving user</string>
+
+    <string name="guiaplantar">PLANTING GUIDE</string>
+    <string name="plagas">Pests</string>
+    <string name="buscarplagas">Search for Pests ...</string>
+    <string name="catalogoplantas">Plant Catalogue</string>
+    <string name="buscarplanta">Search for Plant...</string>
+    <string name="cambiarcontra1">Current Password</string>
+    <string name="cambiarcontra2">New Password</string>
+    <string name="cambiarcontra3">Repeat the Password</string>
+    <string name="nuevoNombre">New Username</string>
+
+    <string name="eliminarPlanta">Delete Plant</string>
+    <string name="guiaparaplantar">Planting Guide</string>
+    <string name="plagas2">Pests</string>
+    <string name="tomarfoto">Take a Picture</string>
+    <string name="identificarfoto">Identify Plant</string>
+    <string name="informacionplanta">Plant Information</string>
+
+    <string name="tusplantas">Your Plants</string>
+    <string name="anyadirplantas">Add Plants</string>
+    <string name="eliminarplantas">Delete Plants</string>
+    <string name="identificarplantas">Identify Plants</string>
+
+    <string name="ajustes">Settings</string>
+    <string name="mijardin">My Garden</string>
+
+    <string name="consejo_1">Tip: Gardening is a constant learning process.</string>
+    <string name="consejo_2">Tip: Add organic matter to the soil regularly to improve fertility.</string>
+    <string name="consejo_3">Tip: Make sure your plants receive the right amount of light according to their specific needs.</string>
+    <string name="consejo_4">Tip: Remove dead leaves and branches to encourage healthy growth.</string>
+    <string name="cambiarusername">Change Username</string>
+    <string name="clickcambiar">Click here to change your username</string>
+    <string name="cambiarcontrasena">Change Password</string>
+    <string name="clickcambiarcontra">Click Here To Change Password</string>
+    <string name="eliminarcuenta">Delete Account</string>
+    <string name="eliminarcuenta2">Click here to delete your account permanently</string>
+
+
+
+</resources>

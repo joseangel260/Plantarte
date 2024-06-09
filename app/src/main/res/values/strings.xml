@@ -1,0 +1,84 @@
+<resources>
+
+    <string name="app_name">Plantarte</string>
+    <string name="text_bienvenido">¡Bienvenido a Jardín!</string>
+    <string name="button_acceder">Acceder</string>
+
+    <string name="stringCorreoContra">Por favor, ingresa correo y contraseña.</string>
+    <string name="iniciadoSesion">Has iniciado sesión.</string>
+    <string name="falloLogin">Fallo de autentificación.</string>
+    <string name="Correoelectrónico">Correo electrónico.</string>
+    <string name="Contraseña">Contraseña.</string>
+    <string name="button_Entrar">Entrar</string>
+    <string name="Olvidastecontra">¿Olvidaste tu contraseña?</string>
+    <string name="Registrarse">REGISTRARSE</string>
+    <string name="ingresarCorreo">Por favor, ingresa tu correo electrónico</string>
+    <string name="emailEnviado">Correo de recuperación de contraseña enviado</string>
+    <string name="errorEnviarEmail">Error al enviar el correo de recuperación</string>
+
+    <string name="usuarioCreado">Usuario creado.</string>
+    <string name="authentication_failed">Authentication failed.</string>
+    <string name="nombre">Nombre</string>
+    <string name="correo">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="repetirPass">Repetir Contraseña</string>
+    <string name="registrarse">REGISTRARSE</string>
+    <string name="IniciaSesion">¿Ya tienes una cuenta? Inicia sesión</string>
+    <string name="notSame_pass">Las contraseñas no coinciden</string>
+    <string name="welcomeJardin">Bienvenido a Tu Jardín</string>
+    <string name="tuJardin">Tu Jardín</string>
+    <string name="tips">Consejos:</string>
+    <string name="plantas">Plantas</string>
+    //consejos esto no se hacerlo muy bien
+    <string name="consejo_1">Consejo: La jardinería es un proceso de aprendizaje constante.</string>
+    <string name="consejo_2">Consejo: Añade materia orgánica al suelo regularmente para mejorar la fertilidad.</string>
+    <string name="consejo_3">Consejo: Asegúrate de que tus plantas reciban la cantidad adecuada de luz según sus necesidades específicas.</string>
+    <string name="consejo_4">Consejo: Retira hojas y ramas muertas para fomentar un crecimiento saludable.</string>
+
+    <string name="editNombreUsr">Editar nombre Usuario</string>
+    <string name="meterTexto">Enter a text</string>
+    <string name="editPassword">Cambiar Contraseña</string>
+    <string name="LastPassword">Enter a antigua password</string>
+    <string name="clickforShow">Click to show a text entry dialog</string>
+    <string name="lenguaje">Cambiar Idioma</string>
+    <string name="seleccionaLeng">Selecciona Idioma</string>
+    <string name="clickforshow">Clic para cambiar el Idioma</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="clickparaEncender">Clicka para encenderlas o apagarlas</string>
+
+    <string name="usuario_no_encontrado">Usuario no encontrado</string>
+    <string name="error_cargar_usuario">Error al cargar el usuario</string>
+    <string name="error_guardar_usuario">Error al guardar el usuario</string>
+
+    <string name="guiaplantar">GUÍA DE PLANTAR</string>
+    <string name="plagas">Plagas</string>
+    <string name="buscarplagas">Buscar Plagas...</string>
+    <string name="catalogoplantas">Catálogo de plantas</string>
+    <string name="buscarplanta">Buscar Planta...</string>
+    <string name="cambiarcontra1">Contraseña actual</string>
+    <string name="cambiarcontra2">Nueva Contraseña</string>
+    <string name="cambiarcontra3">Repite la Contraseña</string>
+    <string name="nuevoNombre">Nuevo nombre de Usuario</string>
+    <string name="eliminarPlanta">Eliminar Plantas</string>
+    <string name="guiaparaplantar">Guía para Plantar</string>
+    <string name="plagas2">Plagas</string>
+    <string name="tomarfoto">Tomar Foto</string>
+    <string name="identificarfoto">Identificar Planta</string>
+    <string name="informacionplanta">Información de la planta</string>
+
+    <string name="tusplantas">Tus Plantas</string>
+    <string name="anyadirplantas">Añadir Plantas</string>
+    <string name="eliminarplantas">Eliminar Plantas</string>
+    <string name="identificarplantas">Identificar Planta</string>
+
+    <string name="ajustes">Ajustes</string>
+    <string name="mijardin">Mi Jardín</string>
+    <string name="cambiarusername">Cambiar Nombre de Usuario</string>
+    <string name="clickcambiar">Haz clic para cambiar tu nombre de usuario</string>
+    <string name="cambiarcontrasena">Cambiar Contraseña</string>
+    <string name="clickcambiarcontra">Haz clic aquí para cambiar tu contraseña</string>
+    <string name="eliminarcuenta">Eliminar cuenta</string>
+    <string name="eliminarcuenta2">Haz clic aquí para eliminar tu cuenta permanentemente</string>
+
+
+</resources>

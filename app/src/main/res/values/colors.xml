@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- res/values/colors.xml -->
+    <!-- Definir colores personalizados -->
+    <color name="primarylils">#9C27B0</color> <!-- Color púrpura, por ejemplo -->
+    <color name="primaryTextColor">#212121</color> <!-- Color negro oscuro para texto principal -->
+    <color name="fuente">#8AE88D</color> <!-- Color gris para texto secundario -->
+    <color name="fondoTexto">#DAF3DB</color> <!-- Color blanco para el fondo -->
+    <color name="boton_color_tint">#86C388</color>
+    <color name="boton_text_color">#0A0C0A</color>
+    <color name="card_background">#000000</color> <!-- Color de fondo de las tarjetas (negro) -->
+    <color name="content_background">#FFFFFF</color> <!-- Color de fondo del contenido dentro de las tarjetas -->
+
+    <style name="CircularImageView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.MaterialComponents.SmallComponent</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

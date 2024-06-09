@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "592997466269",
+    "project_id": "textoyfuente",
+    "storage_bucket": "textoyfuente.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592997466269:android:42ea155596370c9c199474",
+        "android_client_info": {
+          "package_name": "com.alquerias.textoyfuente"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVikB7aa33QsoMEx9JqqacTkeC0jtzOts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

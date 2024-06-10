@@ -1,4 +1,5 @@
 package com.alquerias.textoyfuente
+
 import android.graphics.Typeface
 import android.Manifest
 import android.app.Activity
@@ -9,11 +10,8 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.GridLayout
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.ImageButton
-import android.widget.ImageView
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -67,7 +65,7 @@ class TusPlantasActivity : AppCompatActivity() {
 
     private fun mostrarOpcionesFoto() {
         val items = arrayOf<CharSequence>("Tomar foto", "Elegir de la galería", "Cancelar")
-        val builder = android.app.AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this)
         builder.setTitle("Agregar Foto")
         builder.setItems(items) { dialog, item ->
             when (item) {
@@ -125,37 +123,57 @@ class TusPlantasActivity : AppCompatActivity() {
                     val file = File(currentPhotoPath)
                     if (file.exists()) {
                         val uri = Uri.fromFile(file)
-                        subirImagenAFirebase(uri)
+                        solicitarNombrePlanta(uri)
                     }
                 }
                 REQUEST_IMAGE_GALLERY -> {
                     val uri = data?.data
                     if (uri != null) {
-                        subirImagenAFirebase(uri)
+                        solicitarNombrePlanta(uri)
                     }
                 }
             }
         }
     }
 
-    private fun subirImagenAFirebase(uri: Uri) {
+    private fun solicitarNombrePlanta(uri: Uri) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Nombre de la Planta")
+
+        val input = EditText(this)
+        input.hint = "Ingrese el nombre de la planta"
+        builder.setView(input)
+
+        builder.setPositiveButton("Aceptar") { dialog, _ ->
+            val nombrePlanta = input.text.toString()
+            subirImagenAFirebase(uri, nombrePlanta)
+            dialog.dismiss()
+        }
+        builder.setNegativeButton("Cancelar") { dialog, _ ->
+            dialog.cancel()
+        }
+
+        builder.show()
+    }
+
+    private fun subirImagenAFirebase(uri: Uri, nombrePlanta: String) {
         val storageRef = FirebaseStorage.getInstance().reference
         val photoRef = storageRef.child("fotos_plantas/${uri.lastPathSegment}")
         val uploadTask = photoRef.putFile(uri)
 
         uploadTask.addOnSuccessListener {
             photoRef.downloadUrl.addOnSuccessListener { downloadUrl ->
-                guardarEnFirestore(downloadUrl.toString())
+                guardarEnFirestore(downloadUrl.toString(), nombrePlanta)
             }
         }.addOnFailureListener { exception ->
             Log.e("TusPlantasActivity", "Error subiendo la imagen", exception)
         }
     }
 
-    private fun guardarEnFirestore(url: String) {
+    private fun guardarEnFirestore(url: String, nombrePlanta: String) {
         val planta = hashMapOf(
             "imagen" to url,
-            "nombre_comun" to "Nueva Planta",
+            "nombre_comun" to nombrePlanta,
             "nombre_cientifico" to "Nombre Científico",
             "descripcion" to "Descripción",
             "riego" to "Cada semana",
@@ -212,7 +230,6 @@ class TusPlantasActivity : AppCompatActivity() {
             }
 
             val nombreComunTextView = TextView(this)
-            nombreComunTextView.text = "Nombre: ${(document["nombre_comun"] as? String)?.toUpperCase()}"
             nombreComunTextView.text = "Nombre: ${(document["nombre_comun"] as? String)?.toUpperCase()}"
             nombreComunTextView.setTypeface(null, Typeface.BOLD)
             linearLayout.addView(nombreComunTextView)

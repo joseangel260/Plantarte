@@ -1,5 +1,6 @@
 package com.alquerias.textoyfuente
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
@@ -10,6 +11,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.bumptech.glide.Glide
 import android.graphics.Typeface
 import android.widget.Button
+import android.widget.CheckBox
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -20,6 +23,7 @@ class PlantasFirebase : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private lateinit var linearLayoutPlantas: LinearLayout
     private lateinit var searchView: SearchView
+    private lateinit var btnAgregarFiltro: ImageButton
     private var plantasList: List<Map<String, Any>> = emptyList()
     private val usuarioActual = FirebaseAuth.getInstance().currentUser
 
@@ -29,6 +33,7 @@ class PlantasFirebase : AppCompatActivity() {
 
         linearLayoutPlantas = findViewById(R.id.linearLayoutPlantas)
         searchView = findViewById(R.id.searchView)
+        btnAgregarFiltro = findViewById(R.id.agregarfiltro)
 
         leerPlantas()
 
@@ -42,6 +47,10 @@ class PlantasFirebase : AppCompatActivity() {
                 return true
             }
         })
+
+        btnAgregarFiltro.setOnClickListener {
+            mostrarDialogoFiltroZonas()
+        }
     }
 
     private fun leerPlantas() {
@@ -137,6 +146,57 @@ class PlantasFirebase : AppCompatActivity() {
         mostrarPlantas(filteredPlantas)
     }
 
+    private fun mostrarDialogoFiltroZonas() {
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogLayout = inflater.inflate(R.layout.dialog_filtro_zonas, null)
+        builder.setView(dialogLayout)
+
+        val checkboxAtlantico = dialogLayout.findViewById<CheckBox>(R.id.checkbox_clima_atlantico)
+        val checkboxContinental = dialogLayout.findViewById<CheckBox>(R.id.checkbox_clima_continental)
+        val checkboxMediterraneo = dialogLayout.findViewById<CheckBox>(R.id.checkbox_clima_mediterraneo)
+        val checkboxSemiarido = dialogLayout.findViewById<CheckBox>(R.id.checkbox_clima_semiarido)
+        val checkboxSubtropical = dialogLayout.findViewById<CheckBox>(R.id.checkbox_clima_subtropical)
+        val checkboxMontana = dialogLayout.findViewById<CheckBox>(R.id.checkbox_clima_montana)
+
+        val btnAplicarFiltro = dialogLayout.findViewById<Button>(R.id.btn_aplicar_filtro)
+
+        val dialog = builder.create()
+
+        btnAplicarFiltro.setOnClickListener {
+            val selectedZones = mutableListOf<String>()
+
+            if (checkboxAtlantico.isChecked) selectedZones.add("clima atlantico")
+            if (checkboxContinental.isChecked) selectedZones.add("clima continental")
+            if (checkboxMediterraneo.isChecked) selectedZones.add("clima mediterraneo")
+            if (checkboxSemiarido.isChecked) selectedZones.add("clima semiarido")
+            if (checkboxSubtropical.isChecked) selectedZones.add("clima subtropical")
+            if (checkboxMontana.isChecked) selectedZones.add("clima de montaña")
+
+            filtrarPlantasPorZona(selectedZones)
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    private fun filtrarPlantasPorZona(selectedZones: List<String>) {
+        if (selectedZones.isEmpty()) {
+            mostrarPlantas(plantasList) // Si no se selecciona ninguna zona, muestra todas las plantas
+            return
+        }
+
+        val docRef = db.collection("plantas")
+        docRef.whereIn("zona_geografica", selectedZones).get()
+            .addOnSuccessListener { documents ->
+                val filteredPlantas = documents.map { it.data }
+                mostrarPlantas(filteredPlantas)
+            }
+            .addOnFailureListener { exception ->
+                Log.w("PlantasFirebase", "Error al obtener documentos filtrados: ", exception)
+            }
+    }
+
     private fun anyadirPlantaAlUsuario(planta: Map<String, Any>) {
         usuarioActual?.let { user ->
             val plantaId = planta["plantaId"] as? String ?: return
@@ -157,6 +217,4 @@ class PlantasFirebase : AppCompatActivity() {
                 }
         }
     }
-
-
 }

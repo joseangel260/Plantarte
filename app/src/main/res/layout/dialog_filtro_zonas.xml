@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecciona las zonas geográficas"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_clima_atlantico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clima Atlántico"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_clima_continental"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clima Continental"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_clima_mediterraneo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clima Mediterráneo"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_clima_semiarido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clima Semiárido"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_clima_subtropical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clima Subtropical"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_clima_montana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clima de Montaña"/>
+
+    <Button
+        android:id="@+id/btn_aplicar_filtro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aplicar"/>
+</LinearLayout>

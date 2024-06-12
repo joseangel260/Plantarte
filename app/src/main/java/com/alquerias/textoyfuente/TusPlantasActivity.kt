@@ -5,6 +5,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -15,14 +16,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.airbnb.lottie.LottieAnimationView
 import androidx.cardview.widget.CardView
+import androidx.core.graphics.drawable.toBitmap
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -36,7 +38,7 @@ class TusPlantasActivity : AppCompatActivity() {
     private var plantasList: List<Map<String, Any>> = emptyList()
     private val REQUEST_IMAGE_CAPTURE = 1
     private val REQUEST_IMAGE_GALLERY = 2
-    private lateinit var currentPhotoPath: String
+   // private lateinit var currentPhotoPath: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,33 +82,7 @@ class TusPlantasActivity : AppCompatActivity() {
     private fun dispatchTakePictureIntent() {
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         if (takePictureIntent.resolveActivity(packageManager) != null) {
-            val photoFile: File? = try {
-                createImageFile()
-            } catch (ex: IOException) {
-                Log.e("TusPlantasActivity", "Error creando el archivo de la foto", ex)
-                null
-            }
-            photoFile?.also {
-                val photoURI: Uri = FileProvider.getUriForFile(
-                    this,
-                    "com.alquerias.textoyfuente.fileprovider",
-                    it
-                )
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-            }
-        }
-    }
-
-    private fun createImageFile(): File {
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())
-        val storageDir: File = getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
-        return File.createTempFile(
-            "JPEG_${timeStamp}_",
-            ".jpg",
-            storageDir
-        ).apply {
-            currentPhotoPath = absolutePath
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
         }
     }
 
@@ -120,11 +96,9 @@ class TusPlantasActivity : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 REQUEST_IMAGE_CAPTURE -> {
-                    val file = File(currentPhotoPath)
-                    if (file.exists()) {
-                        val uri = Uri.fromFile(file)
-                        solicitarNombrePlanta(uri)
-                    }
+                    val imageBitmap = data?.extras?.get("data") as Bitmap
+                    val uri = bitmapToUri(imageBitmap)
+                    solicitarNombrePlanta(uri)
                 }
                 REQUEST_IMAGE_GALLERY -> {
                     val uri = data?.data
@@ -134,6 +108,16 @@ class TusPlantasActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun bitmapToUri(bitmap: Bitmap): Uri {
+        val filesDir = applicationContext.filesDir
+        val imageFile = File(filesDir, "temp_image.jpg")
+        val outputStream = FileOutputStream(imageFile)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        outputStream.flush()
+        outputStream.close()
+        return Uri.fromFile(imageFile)
     }
 
     private fun solicitarNombrePlanta(uri: Uri) {
